@@ -1,12 +1,7 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-
-const languages = {
-  en: { name: 'English', flag: '🇬🇧' },
-  cs: { name: 'Čeština', flag: '🇨🇿' },
-  de: { name: 'Deutsch', flag: '🇩🇪' }
-};
+import { LANGUAGES } from '../constants';
 
 const LanguageSwitcher = () => {
   const { language, changeLanguage } = useLanguage();
@@ -24,8 +19,6 @@ const LanguageSwitcher = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const toggleDropdown = () => setIsOpen(!isOpen);
-
   const handleLanguageChange = (lang) => {
     changeLanguage(lang);
     setIsOpen(false);
@@ -34,12 +27,12 @@ const LanguageSwitcher = () => {
   return (
     <div className="relative" ref={dropdownRef}>
       <button
-        onClick={toggleDropdown}
+        onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 px-4 py-2 rounded-lg tech-card hover:border-[rgb(var(--accent-primary))] transition-all"
         aria-label="Select language"
       >
-        <span className="text-lg">{languages[language].flag}</span>
-        <span className="text-gray-300">{languages[language].name}</span>
+        <span className="text-lg">{LANGUAGES[language].flag}</span>
+        <span className="text-gray-300">{LANGUAGES[language].name}</span>
         <svg
           className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${
             isOpen ? 'rotate-180' : ''
@@ -60,11 +53,11 @@ const LanguageSwitcher = () => {
       {isOpen && (
         <div className="absolute mt-2 right-0 w-48 rounded-lg tech-card !p-1 backdrop-blur-lg z-50 dropdown-enter">
           <div className="py-1">
-            {Object.entries(languages).map(([code, { name, flag }]) => (
+            {Object.entries(LANGUAGES).map(([code, { name, flag }]) => (
               <button
                 key={code}
                 onClick={() => handleLanguageChange(code)}
-                className={`w-full px-4 py-2 flex items-center gap-2 rounded hover:bg-[rgb(var(--accent-primary))] hover:bg-opacity-10 transition-colors scale-enter ${
+                className={`w-full px-4 py-2 flex items-center gap-2 rounded hover:bg-[rgb(var(--accent-primary))] hover:bg-opacity-10 transition-colors ${
                   language === code
                     ? 'text-[rgb(var(--accent-primary))]'
                     : 'text-gray-300'

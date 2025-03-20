@@ -1,36 +1,42 @@
 'use client';
-import { useState } from 'react';
-import { themes } from '../themes';
+import { useState, useRef, useEffect } from 'react';
+import { useTheme } from '../hooks/useTheme';
+import { THEME_ICONS } from '../constants';
 
-const ThemeSelector = ({ currentTheme }) => {
+const ThemeSelector = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { currentTheme, setTheme, themes } = useTheme();
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleThemeChange = (themeKey) => {
-    // Update theme in localStorage for persistence
-    localStorage.setItem('portfolio-theme', themeKey);
-    
-    // Update CSS variables
-    const theme = themes[themeKey];
-    document.documentElement.style.setProperty('--foreground-rgb', theme.colors.foreground);
-    document.documentElement.style.setProperty('--background-start-rgb', theme.colors.background.start);
-    document.documentElement.style.setProperty('--background-end-rgb', theme.colors.background.end);
-    document.documentElement.style.setProperty('--accent-primary', theme.colors.accent.primary);
-    document.documentElement.style.setProperty('--accent-secondary', theme.colors.accent.secondary);
-    
-    // Update data-theme attribute
-    document.body.dataset.theme = themeKey;
-    
+    setTheme(themeKey);
     setIsOpen(false);
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="tech-card flex items-center gap-2 !p-3 hover:border-[rgb(var(--accent-primary))]"
+        className="flex items-center gap-2 px-4 py-2 rounded-lg tech-card hover:border-[rgb(var(--accent-primary))] transition-all"
+        aria-label="Select theme"
       >
+        {THEME_ICONS[currentTheme] || THEME_ICONS.dark}
+        <span className="text-gray-300">{themes[currentTheme].name}</span>
         <svg
-          className="w-6 h-6 text-gray-400"
+          className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${
+            isOpen ? 'rotate-180' : ''
+          }`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -39,25 +45,29 @@ const ThemeSelector = ({ currentTheme }) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+            d="M19 9l-7 7-7-7"
           />
         </svg>
-        <span className="text-gray-400">Theme</span>
       </button>
 
       {isOpen && (
-        <div className="absolute bottom-full right-0 mb-2 w-48 tech-card !p-2 flex flex-col gap-1">
-          {Object.entries(themes).map(([key, theme]) => (
-            <button
-              key={key}
-              onClick={() => handleThemeChange(key)}
-              className={`px-4 py-2 rounded text-left hover:bg-[rgb(var(--accent-primary))] hover:bg-opacity-10 transition-colors ${
-                currentTheme === key ? 'text-[rgb(var(--accent-primary))]' : 'text-gray-400'
-              }`}
-            >
-              {theme.name}
-            </button>
-          ))}
+        <div className="absolute mt-2 right-0 w-48 rounded-lg tech-card !p-1 backdrop-blur-lg z-50 dropdown-enter">
+          <div className="py-1">
+            {Object.entries(themes).map(([key, theme]) => (
+              <button
+                key={key}
+                onClick={() => handleThemeChange(key)}
+                className={`w-full px-4 py-2 flex items-center gap-2 rounded hover:bg-[rgb(var(--accent-primary))] hover:bg-opacity-10 transition-colors ${
+                  currentTheme === key
+                    ? 'text-[rgb(var(--accent-primary))]'
+                    : 'text-gray-300'
+                }`}
+              >
+                {THEME_ICONS[key] || THEME_ICONS.dark}
+                <span>{theme.name}</span>
+              </button>
+            ))}
+          </div>
         </div>
       )}
     </div>

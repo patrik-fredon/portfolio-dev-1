@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
 import ThemeSelector from './ThemeSelector';
+import { NAV_ITEMS } from '../constants';
 
 const Navbar = () => {
   const { language } = useLanguage();
@@ -17,33 +18,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { 
-      label: language === 'en' ? 'About' :
-             language === 'cs' ? 'O mně' :
-             'Über mich',
-      href: '#about'
-    },
-    { 
-      label: language === 'en' ? 'Skills' :
-             language === 'cs' ? 'Dovednosti' :
-             'Fähigkeiten',
-      href: '#skills'
-    },
-    { 
-      label: language === 'en' ? 'Projects' :
-             language === 'cs' ? 'Projekty' :
-             'Projekte',
-      href: '#projects'
-    },
-    { 
-      label: language === 'en' ? 'Contact' :
-             language === 'cs' ? 'Kontakt' :
-             'Kontakt',
-      href: '#contact'
-    }
-  ];
-
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-background/80 backdrop-blur-lg shadow-lg' : ''
@@ -55,7 +29,7 @@ const Navbar = () => {
           </a>
 
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
+            {NAV_ITEMS[language].map((item, index) => (
               <a
                 key={index}
                 href={item.href}
