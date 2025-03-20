@@ -1,40 +1,10 @@
 'use client';
 import { useLanguage } from '../contexts/LanguageContext';
 import portfolioData from '../../data/portfolio.json';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
 
 const Contact = () => {
   const { language } = useLanguage();
   const { contact } = portfolioData;
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { 
-      opacity: 0,
-      y: 20
-    },
-    visible: { 
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  };
 
   const socialLinks = [
     {
@@ -77,65 +47,38 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-20">
-      <div className="section-container" ref={containerRef}>
-        <motion.h2 
-          className="text-4xl font-bold mb-8 text-center heading-gradient"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-        >
+      <div className="section-container">
+        <h2 className="text-4xl font-bold mb-8 text-center heading-gradient">
           {language === 'en' ? 'Get In Touch' :
            language === 'cs' ? 'Kontaktujte mě' :
            'Kontakt aufnehmen'}
-        </motion.h2>
+        </h2>
         
-        <motion.p 
-          className="text-center text-lg text-gray-300 mb-12 max-w-2xl mx-auto"
-          variants={itemVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
+        <p className="text-center text-lg text-gray-300 mb-12 max-w-2xl mx-auto">
           {language === 'en' ? 'Feel free to reach out for collaborations or just a friendly hello' :
            language === 'cs' ? 'Neváhejte mě kontaktovat pro spolupráci nebo jen přátelské popovídání' :
            'Kontaktieren Sie mich gerne für Zusammenarbeit oder einfach nur zum freundlichen Austausch'}
-        </motion.p>
+        </p>
 
-        <motion.div 
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
           {socialLinks.map((link, index) => (
-            <motion.a
+            <a
               key={index}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="tech-card group flex flex-col items-center justify-center p-6 hover:border-[rgb(var(--accent-primary))] transition-all"
-              variants={itemVariants}
-              whileHover={{ 
-                scale: 1.05,
-                transition: { duration: 0.2 }
-              }}
-              whileTap={{ scale: 0.95 }}
+              className="tech-card group flex flex-col items-center justify-center p-6 hover:border-[rgb(var(--accent-primary))] transition-all animate-fade-in"
+              style={{ animationDelay: `${index * 150}ms` }}
             >
-              <motion.div 
-                className="text-gray-400 group-hover:text-[rgb(var(--accent-primary))] transition-colors"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6, type: "spring" }}
-              >
+              <div className="text-gray-400 group-hover:text-[rgb(var(--accent-primary))] transition-colors">
                 {link.icon}
-              </motion.div>
-              <motion.span 
-                className="mt-2 text-gray-300 group-hover:text-[rgb(var(--accent-primary))] transition-colors"
-                variants={itemVariants}
-              >
+              </div>
+              <span className="mt-2 text-gray-300 group-hover:text-[rgb(var(--accent-primary))] transition-colors">
                 {link.name}
-              </motion.span>
-            </motion.a>
+              </span>
+            </a>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,29 +1,15 @@
 export const themes = {
-  light: {
-    name: 'Light',
-    colors: {
-      foreground: '31, 41, 55',  // tmavý text
-      background: {
-        start: '249, 250, 251',  // světlé pozadí
-        end: '243, 244, 246'
-      },
-      accent: {
-        primary: '59, 130, 246',  // modré akcenty
-        secondary: '99, 102, 241'
-      }
-    }
-  },
-  dark: {
-    name: 'Dark',
+  default: {
+    name: 'Default',
     colors: {
       foreground: '255, 255, 255',
       background: {
-        start: '17, 24, 39',
-        end: '11, 15, 25'
+        start: '0, 0, 0',
+        end: '0, 0, 0'
       },
       accent: {
-        primary: '147, 197, 253',
-        secondary: '167, 139, 250'
+        primary: '74, 222, 128',
+        secondary: '56, 189, 248'
       }
     }
   },
@@ -66,6 +52,20 @@ export const themes = {
       accent: {
         primary: '255, 231, 0',
         secondary: '0, 255, 166'
+      }
+    }
+  },
+  decent: {
+    name: 'Decent',
+    colors: {
+      foreground: '229, 231, 235',
+      background: {
+        start: '31, 41, 55',
+        end: '17, 24, 39'
+      },
+      accent: {
+        primary: '147, 197, 253',
+        secondary: '167, 139, 250'
       }
     }
   }
