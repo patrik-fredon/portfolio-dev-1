@@ -43,7 +43,7 @@ const Hero = () => {
         transition={{ duration: 1 }}
       >
         <motion.div 
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-[rgb(var(--accent-primary))] opacity-20 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-theme-accent-primary opacity-20 rounded-full blur-3xl"
           animate={{ 
             scale: [1, 1.1, 1],
             opacity: [0.2, 0.25, 0.2]
@@ -55,10 +55,10 @@ const Hero = () => {
           }}
         />
         <motion.div 
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[rgb(var(--accent-secondary))] opacity-20 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-theme-accent-secondary opacity-20 rounded-full blur-3xl"
           animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.15, 0.2]
+            scale: [1, 1.1, 1],
+            opacity: [0.2, 0.25, 0.2]
           }}
           transition={{
             duration: 10,
@@ -93,11 +93,14 @@ const Hero = () => {
               }}
             />
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-[rgb(var(--accent-primary))] shadow-[0_0_30px_rgba(var(--accent-primary),0.3)] group-hover:shadow-[0_0_40px_rgba(var(--accent-primary),0.4)] transition-all duration-500">
-              <div className="relative w-full h-full bg-gradient-to-br from-[rgb(var(--accent-primary))] to-[rgb(var(--accent-secondary))] opacity-50">
-                <div className="absolute inset-0 flex items-center justify-center text-white text-opacity-50 text-lg">
-                  Add profile image here
-                </div>
-              </div>
+              <Image 
+                src="/images/user-placeholder.jpg"
+                alt={`${name} profile picture`}
+                fill
+                sizes="(max-width: 768px) 256px, 400px"
+                className="object-cover object-center"
+                priority
+              />
             </div>
           </motion.div>
 
@@ -117,18 +120,18 @@ const Hero = () => {
                    language === 'cs' ? 'Ahoj, jsem' :
                    'Hallo, ich bin'}
                 </span>
-                <span className="block text-[rgb(var(--accent-primary))]">{name}</span>
+                <span className="block text-theme-accent-primary">{name}</span>
               </motion.h1>
               
               <motion.h2 
-                className="text-2xl sm:text-3xl text-gray-300"
+                className="text-2xl sm:text-3xl text-theme-foreground/70"
                 variants={itemVariants}
               >
                 {getTranslatedText(title)}
               </motion.h2>
               
               <motion.p 
-                className="text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0"
+                className="text-lg text-theme-foreground/50 max-w-2xl mx-auto lg:mx-0"
                 variants={itemVariants}
               >
                 {getTranslatedText(description)}

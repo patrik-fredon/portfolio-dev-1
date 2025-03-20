@@ -1,113 +1,86 @@
-# Developer Portfolio Templates
+# Portfolio Template
 
-A collection of 5 modern, responsive portfolio website templates for developers. Each template has its own unique design and features, built with various technologies including Next.js, React, TypeScript, and JavaScript.
+A modern, responsive portfolio template for developers and designers. Built with Next.js and TailwindCSS.
 
-![Portfolio Templates Preview](docs/preview.png)
+## Features
 
-## ✨ Features
+- Modern, responsive design
+- Multiple language support (English, Czech, German)
+- Dark mode and multiple theme options
+- Animated UI interactions with Framer Motion
+- Sections for:
+  - Hero/Introduction
+  - About
+  - Skills
+  - Projects
+  - Education
+  - Experience
+  - Contact
 
-- 🖥️ 5 unique developer portfolio templates
-- 🎨 Modern and clean designs with customizable themes
-- 🌐 Multi-language support in selected templates
-- 📱 Fully responsive across all devices
-- ⚡ Lightning-fast performance
-- 🎭 Dark/Light theme support
-- 🔄 Smooth animations and transitions
-- 🎯 SEO optimized
-- 🛠️ Easy to customize and extend
+## Getting Started
 
-## 🚀 Templates Overview
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/portfolio-template.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) to view the template in your browser.
 
-The repository contains 5 different portfolio templates, each in its own branch:
+## Customization
 
-1. **portfolio-dev-1**: Modern portfolio with multi-language support (Next.js 13, TailwindCSS)
-2. **portfolio-dev-2**: Minimalist developer portfolio with project showcase (React, TypeScript)
-3. **portfolio-dev-3**: Interactive developer CV with animations (Next.js, JavaScript)
-4. **portfolio-dev-4**: Tech-focused portfolio with blog integration (React, JavaScript)
-5. **portfolio-dev-5**: Creative developer portfolio with 3D elements (Next.js, Three.js, TypeScript)
+### Personal Information
 
-## 🛠️ Installation & Setup
+Edit the `data/portfolio.json` file to update:
 
-These instructions apply to all templates:
-
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/fredon-portfolio-templates.git
-```
-
-2. Checkout the template branch you want to use:
-```bash
-git checkout portfolio-dev-1
-```
-
-3. Navigate to the project directory:
-```bash
-cd portfolio-dev-1
-```
-
-4. Install dependencies:
-```bash
-npm install
-```
-
-5. Run the development server:
-```bash
-npm run dev
-```
-
-6. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 📝 Customization
-
-Each template has its own structure and customization options. Refer to the specific template's directory for detailed documentation on how to customize content, styling, and functionality.
-
-Common customization areas:
-- Personal information
-- Projects showcase
-- Skills and experience
+- Your name, title, and description
+- Skills
+- Projects
+- Education history
+- Work experience
 - Contact information
-- Color themes and styling
 
-## 🎨 Tech Stacks
+### Placeholder Images
 
-The templates use various combinations of:
+The template uses placeholder images for projects. Replace these with your own project screenshots:
 
-- **Frameworks**: Next.js, React
-- **Languages**: JavaScript, TypeScript
-- **Styling**: TailwindCSS, Styled Components, CSS Modules
-- **Animations**: Framer Motion, CSS animations, Three.js
-- **Deployment**: Vercel (recommended), Netlify, GitHub Pages
+1. Add your images to the `public/projects/` directory
+2. Update the image paths in `data/portfolio.json`
 
-## 📱 Responsive Design
+Recommended image dimensions: 800x600px or 16:9 aspect ratio.
 
-All templates are fully responsive with breakpoints:
-- Mobile: 0-640px
-- Tablet: 641-1024px
-- Desktop: 1025px+
+### Themes
 
-## ⚡ Performance
+The template includes multiple themes that can be modified in `app/themes.js`.
 
-All templates are optimized for performance:
-- Optimized images
-- Minimal dependencies
-- Efficient code splitting
-- Optimized fonts
+### Languages
 
-## 🤝 Contributing
+You can customize or add new languages in the `data/portfolio.json` file. The template currently supports:
 
-We welcome contributions! Please feel free to submit pull requests to improve existing templates or add new ones.
+- English (en)
+- Czech (cs)
+- German (de)
 
-## 📄 License
+To add a new language, add translations for all text throughout the portfolio.json file and update the `LANGUAGES` constant in `app/constants.js`.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+## Deployment
 
-## 📧 Contact
+This template can be easily deployed to Vercel:
 
-For questions, feedback, or issues, please:
-1. Check the [Issues](https://github.com/yourusername/fredon-portfolio-templates/issues) page
-2. Create a new issue
-3. Or contact me directly at your@email.com
+1. Push to GitHub
+2. Import the repository to Vercel
+3. Deploy
 
-## ⭐ Support
+## License
 
-If you find these templates helpful, please give this repository a ⭐!
+This template is available for personal and commercial use. Please respect the terms of the license.
+
+## Credits
+
+Created as a portfolio template for developers and designers.

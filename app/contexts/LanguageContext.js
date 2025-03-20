@@ -1,25 +1,46 @@
 'use client';
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
+import { LANGUAGES, STORAGE_KEYS } from '../constants';
 
 const LanguageContext = createContext();
 
 export function LanguageProvider({ children }) {
   const [language, setLanguage] = useState('en');
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage) {
-      setLanguage(savedLanguage);
+    try {
+      const savedLanguage = localStorage.getItem(STORAGE_KEYS.LANGUAGE);
+      if (savedLanguage && LANGUAGES[savedLanguage]) {
+        setLanguage(savedLanguage);
+      }
+    } catch (error) {
+      console.error('Error accessing localStorage:', error);
+    } finally {
+      setIsLoaded(true);
     }
   }, []);
 
-  const changeLanguage = (newLanguage) => {
-    setLanguage(newLanguage);
-    localStorage.setItem('language', newLanguage);
-  };
+  const changeLanguage = useCallback((newLanguage) => {
+    if (LANGUAGES[newLanguage]) {
+      setLanguage(newLanguage);
+      try {
+        localStorage.setItem(STORAGE_KEYS.LANGUAGE, newLanguage);
+      } catch (error) {
+        console.error('Error setting language in localStorage:', error);
+      }
+    }
+  }, []);
+
+  // Memoize the context value to prevent unnecessary re-renders
+  const contextValue = useMemo(() => ({
+    language,
+    changeLanguage,
+    isLoaded
+  }), [language, changeLanguage, isLoaded]);
 
   return (
-    <LanguageContext.Provider value={{ language, changeLanguage }}>
+    <LanguageContext.Provider value={contextValue}>
       {children}
     </LanguageContext.Provider>
   );

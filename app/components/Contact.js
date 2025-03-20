@@ -90,7 +90,7 @@ const Contact = () => {
         </motion.h2>
         
         <motion.p 
-          className="text-center text-lg text-gray-300 mb-12 max-w-2xl mx-auto"
+          className="text-center text-lg text-theme-foreground/70 mb-12 max-w-2xl mx-auto"
           variants={itemVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -121,14 +121,14 @@ const Contact = () => {
               whileTap={{ scale: 0.95 }}
             >
               <motion.div 
-                className="text-gray-400 group-hover:text-[rgb(var(--accent-primary))] transition-colors"
+                className="text-theme-foreground/50 group-hover:text-theme-accent-primary transition-colors"
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6, type: "spring" }}
               >
                 {link.icon}
               </motion.div>
               <motion.span 
-                className="mt-2 text-gray-300 group-hover:text-[rgb(var(--accent-primary))] transition-colors"
+                className="mt-2 text-theme-foreground/70 group-hover:text-theme-accent-primary transition-colors"
                 variants={itemVariants}
               >
                 {link.name}

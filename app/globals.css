@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Root CSS variables - these are set dynamically by the useTheme hook */
 :root {
+  /* Default theme variables with fallbacks */
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
@@ -124,15 +126,15 @@ body {
   }
   
   .heading-gradient {
-    @apply bg-gradient-to-r from-[rgb(var(--accent-primary))] to-[rgb(var(--accent-secondary))] bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-theme-accent-primary to-theme-accent-secondary bg-clip-text text-transparent;
   }
   
   .tech-card {
-    @apply bg-black/30 backdrop-blur-sm border border-gray-700 rounded-lg p-6 hover:border-[rgb(var(--accent-primary))] transition-all duration-300;
+    @apply bg-black/30 backdrop-blur-sm border border-theme-accent-primary/20 rounded-lg p-6 hover:border-theme-accent-primary transition-all duration-300;
   }
   
   .button-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-[rgb(var(--accent-primary))] to-[rgb(var(--accent-secondary))] rounded-lg font-semibold text-black hover:opacity-90 transition-opacity;
+    @apply px-6 py-3 bg-gradient-to-r from-theme-accent-primary to-theme-accent-secondary rounded-lg font-semibold text-theme-foreground hover:opacity-90 transition-opacity;
   }
 }
 
@@ -148,45 +150,42 @@ body {
   }
 }
 
-/* Theme-specific styles */
+@keyframes gradientPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Set gradient variables for different themes */
 [data-theme='synthwave'] {
-  --gradient-overlay: linear-gradient(45deg, rgba(255, 83, 244, 0.1), rgba(0, 223, 255, 0.1));
+  --gradient-overlay: linear-gradient(135deg, rgba(var(--accent-primary), 0.2), rgba(var(--accent-secondary), 0.2));
 }
 
 [data-theme='cyberpunk'] {
-  --gradient-overlay: linear-gradient(45deg, rgba(255, 231, 0, 0.1), rgba(0, 255, 166, 0.1));
+  --gradient-overlay: linear-gradient(135deg, rgba(var(--accent-primary), 0.2), rgba(var(--accent-secondary), 0.2));
 }
 
 [data-theme='dracula'] {
-  --gradient-overlay: linear-gradient(45deg, rgba(255, 121, 198, 0.1), rgba(139, 233, 253, 0.1));
+  --gradient-overlay: linear-gradient(135deg, rgba(var(--accent-primary), 0.2), rgba(var(--accent-secondary), 0.2));
 }
 
-[data-theme='decent'] {
-  --gradient-overlay: linear-gradient(45deg, rgba(147, 197, 253, 0.1), rgba(167, 139, 250, 0.1));
+[data-theme='light'] {
+  --gradient-overlay: linear-gradient(135deg, rgba(var(--accent-primary), 0.1), rgba(var(--accent-secondary), 0.1));
 }
 
-/* Theme-specific gradients */
-[data-theme='synthwave'] .tech-card {
-  @apply bg-black/40 border-purple-800/50;
+[data-theme='dark'] {
+  --gradient-overlay: linear-gradient(135deg, rgba(var(--accent-primary), 0.2), rgba(var(--accent-secondary), 0.2));
+}
+
+/* Theme-specific style overrides */
+[data-theme] .tech-card {
   background-image: var(--gradient-overlay);
 }
 
-[data-theme='cyberpunk'] .tech-card {
-  @apply bg-black/50 border-yellow-400/30;
-  background-image: var(--gradient-overlay);
-}
-
-[data-theme='dracula'] .tech-card {
-  @apply bg-[#282a36]/50 border-purple-500/30;
-  background-image: var(--gradient-overlay);
-}
-
-[data-theme='decent'] .tech-card {
-  @apply bg-gray-800/30 border-blue-500/20;
-  background-image: var(--gradient-overlay);
-}
-
-/* Theme-specific button styles */
+/* Theme-specific button style overrides */
 [data-theme='synthwave'] .button-primary {
   text-shadow: 0 0 8px rgb(var(--accent-primary));
 }
@@ -200,6 +199,7 @@ body {
   border: 1px solid rgba(var(--accent-secondary), 0.3);
 }
 
-[data-theme='decent'] .button-primary {
-  @apply bg-opacity-90 hover:bg-opacity-100;
+[data-theme='light'] .button-primary,
+[data-theme='dark'] .button-primary {
+  @apply text-white;
 }

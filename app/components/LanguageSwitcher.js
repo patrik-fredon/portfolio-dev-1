@@ -32,9 +32,9 @@ const LanguageSwitcher = () => {
         aria-label="Select language"
       >
         <span className="text-lg">{LANGUAGES[language].flag}</span>
-        <span className="text-gray-300">{LANGUAGES[language].name}</span>
+        <span className="text-theme-foreground/70">{LANGUAGES[language].name}</span>
         <svg
-          className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${
+          className={`w-4 h-4 text-theme-foreground/50 transition-transform duration-200 ${
             isOpen ? 'rotate-180' : ''
           }`}
           fill="none"
@@ -57,10 +57,10 @@ const LanguageSwitcher = () => {
               <button
                 key={code}
                 onClick={() => handleLanguageChange(code)}
-                className={`w-full px-4 py-2 flex items-center gap-2 rounded hover:bg-[rgb(var(--accent-primary))] hover:bg-opacity-10 transition-colors ${
+                className={`w-full px-4 py-2 flex items-center gap-2 rounded hover:bg-theme-accent-primary hover:bg-opacity-10 transition-colors ${
                   language === code
-                    ? 'text-[rgb(var(--accent-primary))]'
-                    : 'text-gray-300'
+                    ? 'text-theme-accent-primary'
+                    : 'text-theme-foreground/70'
                 }`}
               >
                 <span className="text-lg">{flag}</span>

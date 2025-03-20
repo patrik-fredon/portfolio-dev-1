@@ -1,18 +1,66 @@
 'use client';
-import { useLanguage } from '../contexts/LanguageContext';
+import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
+import React, { useRef } from 'react';
+import {
+  AiFillApi, AiFillCode, AiFillThunderbolt
+} from 'react-icons/ai';
+import {
+  DiBootstrap,
+  DiSass
+} from 'react-icons/di';
+import { FaGithub } from 'react-icons/fa';
+import {
+  SiCss3,
+  SiFirebase,
+  SiHtml5,
+  SiJavascript,
+  SiMongodb,
+  SiNextdotjs, SiNodedotjs,
+  SiPython,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel
+} from 'react-icons/si';
 import portfolioData from '../../data/portfolio.json';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { getTranslatedContent, isValidProject } from '../utils/validation';
+
+const getIconComponent = (tech) => {
+  const iconMap = {
+    // Languages
+    'JavaScript': SiJavascript,
+    'TypeScript': SiTypescript,
+    'Python': SiPython,
+    'HTML5': SiHtml5,
+    'CSS3': SiCss3,
+    // Frameworks & Libraries
+    'React': SiReact,
+    'Next.js': SiNextdotjs,
+    'Node.js': SiNodedotjs,
+    'Express': SiNodedotjs,
+    'TailwindCSS': SiTailwindcss,
+    'Bootstrap': DiBootstrap,
+    'Sass': DiSass,
+    'scss': DiSass,
+    'WebSocket': AiFillThunderbolt,
+    'REST API': AiFillApi,
+    // Tools & Platforms
+    'MongoDB': SiMongodb,
+    'Firebase': SiFirebase,
+    'OpenAI API': AiFillCode
+  };
+
+  return iconMap[tech] || null;
+};
 
 const Projects = () => {
   const { language } = useLanguage();
-  const { projects } = portfolioData;
+  const { projects = [] } = portfolioData;
 
-  const getTranslatedText = (obj) => {
-    return obj[language] || obj.en; // Fallback to English if translation not found
-  };
+  // Filtruj nevalidní projekty
+  const validProjects = projects.filter(isValidProject);
 
   const ProjectCard = ({ project, index }) => {
     const cardRef = useRef(null);
@@ -63,28 +111,23 @@ const Projects = () => {
           className="w-full lg:w-1/2"
           variants={childVariants}
         >
-          <motion.div 
-            className="relative aspect-video overflow-hidden rounded-lg tech-card p-2"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-          >
-            <motion.div 
-              className="relative w-full h-full bg-gradient-to-br from-[rgb(var(--accent-primary))] to-[rgb(var(--accent-secondary))] opacity-20"
-              animate={{
-                opacity: [0.2, 0.3, 0.2],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              {/* Project Title as Placeholder */}
-              <div className="absolute inset-0 flex items-center justify-center text-[rgb(var(--accent-primary))] text-xl font-semibold">
-                {getTranslatedText(project.title)}
-              </div>
-            </motion.div>
-          </motion.div>
+<motion.div 
+  className="relative aspect-video overflow-hidden rounded-lg tech-card p-2"
+  whileHover={{ scale: 1.02 }}
+  transition={{ duration: 0.3 }}
+>
+  <Image
+    src={project.image.startsWith('/') ? project.image : `/${project.image}`}
+    alt={getTranslatedContent(project.title, language, 'Untitled Project')}
+    fill
+    sizes="100vw"
+    style={{ objectFit: "cover" }}
+    className="rounded-lg"
+    placeholder="blur"
+    blurDataURL="/images/user-placeholder.jpg"
+    onError={(e) => (e.target.src = '/images/user-placeholder.jpg')}
+  />
+</motion.div>
         </motion.div>
 
         {/* Project Info */}
@@ -93,32 +136,36 @@ const Projects = () => {
           variants={childVariants}
         >
           <motion.h3 
-            className="text-2xl font-bold text-[rgb(var(--accent-primary))]"
+            className="text-2xl font-bold text-theme-accent-primary"
             variants={childVariants}
           >
-            {getTranslatedText(project.title)}
+            {getTranslatedContent(project.title, language, 'Untitled Project')}
           </motion.h3>
 
           <motion.p 
-            className="text-gray-300"
+            className="text-theme-foreground"
             variants={childVariants}
           >
-            {getTranslatedText(project.description)}
+            {getTranslatedContent(project.description, language, 'No description available')}
           </motion.p>
 
           <motion.div 
             className="flex flex-wrap gap-3"
             variants={childVariants}
           >
-            {project.technologies.map((tech, techIndex) => (
+            {(project.technologies || []).map((tech, techIndex) => (
               <motion.span
                 key={techIndex}
-                className="px-3 py-1 rounded-full bg-[rgb(var(--accent-primary))] bg-opacity-10 text-[rgb(var(--accent-primary))] text-sm"
+                className="px-3 py-1 rounded-full bg-theme-accent-primary bg-opacity-10 text-theme-accent-primary text-sm flex items-center gap-2"
                 whileHover={{ 
                   scale: 1.05,
                   backgroundColor: "rgba(var(--accent-primary), 0.2)"
                 }}
               >
+                {getIconComponent(tech) && React.createElement(getIconComponent(tech), {
+                  className: "inline-block",
+                  size: "1.2em"
+                })}
                 {tech}
               </motion.span>
             ))}
@@ -133,10 +180,11 @@ const Projects = () => {
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary"
+                className="btn-primary inline-flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
+                <SiVercel className="text-lg" />
                 {language === 'en' ? 'Live Demo' :
                  language === 'cs' ? 'Živé Demo' :
                  'Live Demo'}
@@ -147,10 +195,11 @@ const Projects = () => {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary"
+                className="btn-secondary inline-flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
+                <FaGithub className="text-lg" />
                 GitHub
               </motion.a>
             )}
@@ -176,7 +225,7 @@ const Projects = () => {
         </motion.h2>
 
         <div className="space-y-20">
-          {projects.map((project, index) => (
+          {validProjects.map((project, index) => (
             <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>

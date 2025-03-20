@@ -1,19 +1,19 @@
 'use client';
-import { useLanguage } from '../contexts/LanguageContext';
-import portfolioData from '../../data/portfolio.json';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import portfolioData from '../../data/portfolio.json';
+import { useLanguage } from '../contexts/LanguageContext';
+import { getTranslatedContent, isValidEducation, isValidExperience } from '../utils/validation';
 
 const About = () => {
   const { language } = useLanguage();
-  const { about } = portfolioData;
+  const { about = {} } = portfolioData;
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
-  const getTranslatedText = (obj) => {
-    return obj[language] || obj.en; // Fallback to English if translation not found
-  };
+  // Filtruj nevalidní záznamy
+  const validEducation = (portfolioData.education || []).filter(isValidEducation);
+  const validExperience = (portfolioData.experience || []).filter(isValidExperience);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -90,7 +90,7 @@ const About = () => {
         >
           <motion.div className="space-y-6" variants={containerVariants}>
             <motion.h3 
-              className="text-2xl font-semibold text-[rgb(var(--accent-primary))] mb-4"
+              className="text-2xl font-semibold text-theme-accent-primary mb-4"
               variants={itemVariants}
             >
               {language === 'en' ? 'Background' :
@@ -98,10 +98,10 @@ const About = () => {
                'Hintergrund'}
             </motion.h3>
             <motion.p 
-              className="text-gray-300 leading-relaxed"
+              className="text-theme-foreground/70 leading-relaxed"
               variants={itemVariants}
             >
-              {getTranslatedText(about.bio)}
+              {getTranslatedContent(about.bio, language, '')}
             </motion.p>
             
             <motion.div 
@@ -109,7 +109,7 @@ const About = () => {
               variants={containerVariants}
             >
               <motion.h4 
-                className="text-xl font-semibold text-[rgb(var(--accent-secondary))] mb-3"
+                className="text-xl font-semibold text-theme-accent-secondary mb-3"
                 variants={itemVariants}
               >
                 {language === 'en' ? 'Education' :
@@ -120,25 +120,25 @@ const About = () => {
                 className="space-y-3"
                 variants={containerVariants}
               >
-                {about.education.map((edu, index) => (
+                {validEducation.map((education, index) => (
                   <CardWithAnimation key={index} index={index}>
                     <motion.div 
-                      className="font-medium text-[rgb(var(--accent-primary))]"
+                      className="font-medium text-theme-accent-primary"
                       variants={itemVariants}
                     >
-                      {getTranslatedText(edu.degree)}
+                      {getTranslatedContent(education.degree, language, 'Untitled Degree')}
                     </motion.div>
                     <motion.div 
-                      className="text-sm text-gray-400"
+                      className="text-sm text-theme-foreground/50"
                       variants={itemVariants}
                     >
-                      {edu.year}
+                      {education.year || 'Ongoing'}
                     </motion.div>
                     <motion.div 
-                      className="text-gray-300"
+                      className="text-theme-foreground/70"
                       variants={itemVariants}
                     >
-                      {getTranslatedText(edu.school)}
+                      {getTranslatedContent(education.school, language, 'Institution')}
                     </motion.div>
                   </CardWithAnimation>
                 ))}
@@ -151,7 +151,7 @@ const About = () => {
             variants={containerVariants}
           >
             <motion.h3 
-              className="text-2xl font-semibold text-[rgb(var(--accent-primary))] mb-4"
+              className="text-2xl font-semibold text-theme-accent-primary mb-4"
               variants={itemVariants}
             >
               {language === 'en' ? 'Experience' :
@@ -162,25 +162,25 @@ const About = () => {
               className="space-y-4"
               variants={containerVariants}
             >
-              {about.experience.map((exp, index) => (
+              {validExperience.map((experience, index) => (
                 <CardWithAnimation key={index} index={index}>
                   <motion.div 
-                    className="font-medium text-[rgb(var(--accent-primary))]"
+                    className="font-medium text-theme-accent-primary"
                     variants={itemVariants}
                   >
-                    {getTranslatedText(exp.position)}
+                    {getTranslatedContent(experience.position, language, 'Position')}
                   </motion.div>
                   <motion.div 
-                    className="text-sm text-gray-400"
+                    className="text-sm text-theme-foreground/50"
                     variants={itemVariants}
                   >
-                    {exp.company} | {getTranslatedText(exp.duration)}
+                    {experience.company} {experience.duration ? `| ${getTranslatedContent(experience.duration, language)}` : ''}
                   </motion.div>
                   <motion.div 
-                    className="text-gray-300 mt-2"
+                    className="text-theme-foreground/70 mt-2"
                     variants={itemVariants}
                   >
-                    {getTranslatedText(exp.description)}
+                    {getTranslatedContent(experience.description, language, 'No description available')}
                   </motion.div>
                 </CardWithAnimation>
               ))}

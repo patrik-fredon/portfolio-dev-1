@@ -1,10 +1,10 @@
 {
   "settings": {
-    "theme": "synthwave",
+    "theme": "dark",
     "defaultLanguage": "en"
   },
   "introduction": {
-    "name": "John Doe",
+    "name": "Your Name",
     "title": {
       "en": "Full Stack Developer",
       "cs": "Full Stack vývojář",
@@ -28,7 +28,26 @@
       "Python",
       "HTML5",
       "CSS3",
-      "SQL"
+      "SQL",
+      "NoSQL",
+      "GraphQL",
+      "Java",
+      "C#",
+      "Ruby",
+      "PHP",
+      "Swift",
+      "Kotlin",
+      "Go",
+      "Rust",
+      "Scala",
+      "Perl",
+      "R",
+      "Shell Scripting",
+      "C++",
+      "C",
+      "Objective-C",
+      "Visual Basic",
+      "Assembly"
     ],
     "frameworks": [
       "React",
@@ -36,7 +55,19 @@
       "Node.js",
       "Express",
       "TailwindCSS",
-      "Django"
+      "Django",
+      "Flask",
+      "Bootstrap",
+      "Material-UI",
+      "Ant Design",
+      "Sass",
+      "css-modules",
+      "styled-components",
+      "websockets",
+      "REST API",
+      "GraphQL",
+      "Apollo Client",
+      "Redux"
     ],
     "tools": [
       "Git",
@@ -44,41 +75,49 @@
       "AWS",
       "MongoDB",
       "PostgreSQL",
-      "Firebase"
+      "Firebase",
+      "Heroku",
+      "Netlify",
+      "Vercel",
+      "Jest",
+      "Cypress",
+      "Selenium",
+      "JIRA",
+      "Trello",
+      "Slack"
     ]
   },
   "projects": [
     {
       "title": {
-        "en": "E-commerce Platform",
-        "cs": "E-commerce Platforma",
-        "de": "E-Commerce-Plattform"
+        "en": "Admin Dashboard",
+        "cs": "Admin Dashboard",
+        "de": "Admin Dashboard"
       },
       "description": {
         "en": "A full-stack e-commerce solution with real-time inventory management",
         "cs": "Kompletní e-commerce řešení se správou zásob v reálném čase",
         "de": "Eine Full-Stack-E-Commerce-Lösung mit Echtzeit-Bestandsverwaltung"
       },
-      "technologies": ["Next.js", "Node.js", "MongoDB", "TailwindCSS"],
-      "image": "/projects/ecommerce.png",
-      "github": "https://github.com/username/ecommerce",
-      "live": "https://ecommerce-demo.com"
+      "technologies": ["Python", "Docker", "Streamlit", "MongoDB", "Flask", "REST API"],
+      "image": "/projects/placeholder-project-1.png",
+      "github": "https://github.com/username/admin-dashboard"
     },
     {
       "title": {
-        "en": "Task Management App",
-        "cs": "Aplikace pro správu úkolů",
-        "de": "Aufgabenverwaltungs-App"
+        "en": "Portfolio Template",
+        "cs": "Šablona portfolia",
+        "de": "Portfolio-Vorlage"
       },
       "description": {
-        "en": "Collaborative task management tool with real-time updates",
-        "cs": "Kolaborativní nástroj pro správu úkolů s aktualizacemi v reálném čase",
-        "de": "Kollaboratives Aufgabenverwaltungstool mit Echtzeit-Updates"
+        "en": "The Portfolio Template is a modern, responsive, and customizable portfolio template designed for professionals. Built with Next.js, TailwindCSS, and Framer Motion, it offers a clean and engaging interface to showcase skills, experience, and projects.",
+        "cs": "Šablona portfolia je moderní, responsivní a přizpůsobitelná šablona portfolia určená pro profesionály. Postaveno pomocí Next.js, Tailwindcss a Framer Motion, nabízí čisté a poutavé rozhraní pro předvádění dovedností, zkušeností a projektů.",
+        "de": "Die Portfolio-Vorlage ist eine moderne, reaktionsschnelle und anpassbare Portfolio-Vorlage für Fachleute.Erstellt mit Next.js, Tailwindcss und Framer Motion bietet eine saubere und ansprechende Oberfläche für die Demonstration von Fähigkeiten, Erfahrungen und Projekten."
       },
-      "technologies": ["React", "Firebase", "TailwindCSS"],
-      "image": "/projects/taskmanager.png",
-      "github": "https://github.com/username/taskmanager",
-      "live": "https://taskmanager-demo.com"
+      "technologies": ["JavaScript", "Next.js", "React", "WebSocket", "TailwindCSS", "JSON"],
+      "image": "/projects/placeholder-project-2.png",
+      "github": "https://github.com/username/portfolio-template",
+      "live": "https://portfolio-template-demo.vercel.app/"
     },
     {
       "title": {
@@ -91,85 +130,193 @@
         "cs": "Moderní chatovací rozhraní s odpověďmi poháněnými umělou inteligencí",
         "de": "Moderne Chat-Schnittstelle mit KI-gestützten Antworten"
       },
-      "technologies": ["Next.js", "OpenAI API", "TailwindCSS"],
-      "image": "/projects/aichat.png",
-      "github": "https://github.com/username/aichat",
-      "live": "https://aichat-demo.com"
+      "technologies": ["Next.js", "OpenAI API", "TailwindCSS", "TypeScript"],
+      "image": "/projects/placeholder-project-3.png",
+      "github": "https://github.com/username/ai-chat"
+    },
+    {
+      "title": {
+        "en": "Music Portfolio",
+        "cs": "Hudební portfolio",
+        "de": "Musik-Portfolio"
+      },
+      "description": {
+        "en": "Comprehensive Landing Page Portfolio for a musician",
+        "cs": "Komplexní portfolio vstupní stránky pro hudebníka",
+        "de": "Umfassendes Zielseite Portfolio für einen Musiker"
+      },
+      "technologies": ["Next.js", "Node.js", "TailwindCSS", "TypeScript", "MongoDB"],
+      "image": "/projects/placeholder-project-4.png",
+      "github": "https://github.com/username/music-portfolio"
     }
   ],
   "about": {
-    "bio": {
-      "en": "With over 5 years of experience in software development, I specialize in building modern web applications that solve real-world problems. My journey in tech started with a curiosity about how things work, which evolved into a passion for creating elegant solutions through code.",
-      "cs": "S více než 5 lety zkušeností v oblasti vývoje software se specializuji na tvorbu moderních webových aplikací, které řeší reálné problémy. Moje cesta v technologiích začala zvědavostí o tom, jak věci fungují, což se vyvinulo v vášeň pro vytváření elegantních řešení pomocí kódu.",
-      "de": "Mit über 5 Jahren Erfahrung in der Softwareentwicklung spezialisiere ich mich auf die Entwicklung moderner Webanwendungen, die reale Probleme lösen. Meine Reise in der Technologie begann mit der Neugier darüber, wie Dinge funktionieren, die sich zu einer Leidenschaft für die Entwicklung eleganter Lösungen durch Code entwickelte."
+      "bio": {
+        "en": "I am a passionate developer with experience in Full Stack development, graphic design, copywriting and SEO editing. IT world is my lifelong hobby and coding is not only a job but also a passion for me. With an eye for design and attention to detail, I create efficient, scalable solutions that combine clean code with intuitive user interfaces. My expertise spans both front-end and back-end technologies, allowing me to turn ideas into reality from first sketch to final product. I enjoy working on projects that require creativity, precision and innovation, whether it's web development, visual identity design or creating engaging content.",
+        "cs": "Jsem vášnivý vývojář s praxí v oblasti Full Stack vývoje, grafického designu, copywritingu a SEO editace. IT svět je mým celoživotním koníčkem a kódování je pro mě nejen práce, ale i vášeň. S citem pro design a důrazem na detail vytvářím efektivní, škálovatelná řešení, která spojují čistý kód s intuitivním uživatelským rozhraním. Mé odborné znalosti pokrývají jak front-end, tak back-end technologie, což mi umožňuje přetvářet nápady v realitu od prvního náčrtu až po finální produkt. Rád pracuji na projektech, které vyžadují kreativitu, preciznost a inovace, ať už jde o vývoj webových aplikací, návrh vizuální identity nebo tvorbu poutavého obsahu.",
+        "de": "Ich bin ein leidenschaftlicher Entwickler mit Erfahrung in der Full-Stack-Entwicklung, Grafikdesign, Copywriting und SEO-Redaktion. Die IT-Welt ist mein lebenslanges Hobby und Coding ist für mich nicht nur ein Job, sondern auch eine Leidenschaft. Mit einem Auge für Design und Liebe zum Detail erstelle ich effiziente, skalierbare Lösungen, die sauberen Code mit intuitiven Benutzeroberflächen kombinieren. Mein Fachwissen erstreckt sich sowohl auf Front-End- als auch auf Back-End-Technologien, so dass ich Ideen von der ersten Skizze bis zum fertigen Produkt in die Realität umsetzen kann."
+      }
     },
-    "education": [
-      {
-        "degree": {
-          "en": "Master of Science in Computer Science",
-          "cs": "Magisterské studium v oboru Informatika",
-          "de": "Master of Science in Informatik"
-        },
-        "school": {
-          "en": "University of Technology",
-          "cs": "Technická univerzita",
-          "de": "Technische Universität"
-        },
-        "year": "2020"
+  "education": [
+    {
+      "degree": {
+        "en": "Master of Science in Computer Science",
+        "cs": "Magisterské studium v oboru Informatika",
+        "de": "Master of Science in Informatik"
       },
-      {
-        "degree": {
-          "en": "Bachelor of Science in Software Engineering",
-          "cs": "Bakalářské studium v oboru Softwarové inženýrství",
-          "de": "Bachelor of Science in Softwaretechnik"
-        },
-        "school": {
-          "en": "State University",
-          "cs": "Státní univerzita",
-          "de": "Staatliche Universität"
-        },
-        "year": "2018"
-      }
-    ],
-    "experience": [
-      {
-        "position": {
-          "en": "Senior Full Stack Developer",
-          "cs": "Senior Full Stack vývojář",
-          "de": "Senior Full Stack Entwickler"
-        },
-        "company": "Tech Solutions Inc.",
-        "duration": {
-          "en": "2020 - Present",
-          "cs": "2020 - současnost",
-          "de": "2020 - Aktuell"
-        },
-        "description": {
-          "en": "Leading development of enterprise web applications",
-          "cs": "Vedení vývoje podnikových webových aplikací",
-          "de": "Leitung der Entwicklung von Unternehmens-Webanwendungen"
-        }
+      "school": {
+        "en": "University of Technology",
+        "cs": "Technická univerzita",
+        "de": "Technische Universität"
       },
-      {
-        "position": {
-          "en": "Software Developer",
-          "cs": "Softwarový vývojář",
-          "de": "Software-Entwickler"
+      "year": "20XX-20XX"
+    },
+    {    
+      "degree": {
+        "en": "Bachelor of Science in Software Engineering",
+        "cs": "Bakalářské studium v oboru Softwarové inženýrství",
+        "de": "Bachelor of Science in Softwaretechnik"
         },
-        "company": "Digital Innovations Co.",
-        "duration": "2018 - 2020",
-        "description": {
-          "en": "Developed and maintained multiple client projects",
-          "cs": "Vývoj a údržba několika klientských projektů",
-          "de": "Entwicklung und Wartung mehrerer Kundenprojekte"
-        }
+      "school": {
+        "en": "State University",
+        "cs": "Státní univerzita",
+        "de": "Staatliche Universität"
+      },
+      "year": "20XX-20XX"
+    }
+  ],  
+  "experience": [
+    {
+      "position": {
+        "en": "Systems Technician",
+        "cs": "Technik systémů",
+        "de": "Systemtechniker"
+      },
+      "company": "Tech Solutions, Inc.",
+      "duration": {
+        "en": "20XX - 20XX",
+        "cs": "20XX - 20XX",
+        "de": "20XX - 20XX"
+      },
+      "description": {
+        "en": "Installation, maintenance, and repair of technical systems. Provided technical support to clients, resolved hardware and software issues, and ensured smooth operation of systems.",
+        "cs": "Instalace, údržba a opravy technických systémů. Poskytování technické podpory klientům, řešení hardwarových a softwarových problémů a zajištění bezproblémového provozu systémů.",
+        "de": "Installation, Wartung und Reparatur von technischen Systemen. Technischer Support für Kunden, Behebung von Hardware- und Softwareproblemen und Sicherstellung eines reibungslosen Betriebs der Systeme."
       }
-    ]
-  },
+    },
+    {
+      "position": {
+        "en": "Hardware Repair Specialist",
+        "cs": "Specialista na opravy hardwaru",
+        "de": "Hardware-Reparaturspezialist"
+      },
+      "company": "InfoTech Services, LLC",
+      "duration": {
+        "en": "20XX - 20XX",
+        "cs": "20XX - 20XX",
+        "de": "20XX - 20XX"
+      },
+      "description": {
+        "en": "Diagnosing, repairing, and maintaining hardware components such as computers, servers, and peripherals. Providing technical support and ensuring optimal functionality of IT equipment.",
+        "cs": "Diagnostika, opravy a údržba hardwarových komponentů, jako jsou počítače, servery a periferie. Poskytování technické podpory a zajištění optimální funkčnosti IT zařízení.",
+        "de": "Diagnose, Reparatur und Wartung von Hardwarekomponenten wie Computern, Servern und Peripheriegeräten. Bereitstellung von technischem Support und Sicherstellung der optimalen Funktionalität von IT-Geräten."
+      }
+    },
+    {
+      "position": {
+        "en": "IT Operations Specialist",
+        "cs": "Specialista IT provozu",
+        "de": "IT-Betriebsspezialist"
+      },
+      "company": "Global IT Group",
+      "duration": {
+        "en": "20XX - 20XX",
+        "cs": "20XX - 20XX",
+        "de": "20XX - 20XX"
+      },
+      "description": {
+        "en": "Monitored and maintained IT systems and infrastructure, ensuring high availability and performance. Responded to incidents, resolved technical issues, and collaborated with teams to implement improvements.",
+        "cs": "Monitorování a údržba IT systémů a infrastruktury, zajištění vysoké dostupnosti a výkonu. Řešení incidentů, odstraňování technických problémů a spolupráce s týmy na implementaci vylepšení.",
+        "de": "Überwachung und Wartung von IT-Systemen und Infrastruktur, Sicherstellung hoher Verfügbarkeit und Leistung. Reaktion auf Vorfälle, Behebung technischer Probleme und Zusammenarbeit mit Teams zur Implementierung von Verbesserungen."
+      }
+    },
+    {
+      "position": {
+        "en": "Full Stack Developer",
+        "cs": "Full Stack vývojář",
+        "de": "Full Stack-Entwickler"
+      },
+      "company": "Financial Tech Solutions",
+      "duration": {
+        "en": "20XX - 20XX",
+        "cs": "20XX - 20XX",
+        "de": "20XX - 20XX"
+      },
+      "description": {
+        "en": "Development and maintenance of secure web applications and systems for the banking sector, with a focus on security. Implemented front-end and back-end solutions, ensured data protection, and complied with strict security standards.",
+        "cs": "Vývoj a údržba zabezpečených webových aplikací a systémů pro bankovní sektor s důrazem na zabezpečení. Implementace front-endových a back-endových řešení, zajištění ochrany dat a dodržování přísných bezpečnostních standardů.",
+        "de": "Entwicklung und Wartung sicherer Webanwendungen und Systeme für den Bankensektor mit Schwerpunkt auf Sicherheit. Implementierung von Front-End- und Back-End-Lösungen, Gewährleistung des Datenschutzes und Einhaltung strenger Sicherheitsstandards."
+      }
+    },
+    {
+      "position": {
+        "en": "Senior Full Stack Developer",
+        "cs": "Senior Full Stack vývojář",
+        "de": "Senior Full Stack-Entwickler"
+      },
+      "company": "Enterprise Solutions, Inc.",
+      "duration": {
+        "en": "20XX - Present",
+        "cs": "20XX - současnost",
+        "de": "20XX - Aktuell"
+      },
+      "description": {
+        "en": "Development and maintenance of secure web applications and systems. Implementation of front-end and back-end solutions, ensuring data protection and compliance with security standards.",
+        "cs": "Vývoj a údržba zabezpečených webových aplikací a systémů. Implementace front-endových a back-endových řešení, zajištění ochrany dat a souladu s bezpečnostními standardy.",
+        "de": "Entwicklung und Wartung sicherer Webanwendungen und Systeme. Implementierung von Front-End- und Back-End-Lösungen, Gewährleistung des Datenschutzes und der Einhaltung von Sicherheitsstandards."
+      }
+    },
+    {
+      "position": {
+        "en": "CEO & Co-Founder, Fullstack Developer",
+        "cs": "CEO a spoluzakladatel, vývojář FullStack",
+        "de": "CEO & Mitbegründer, FullStack Developer"
+      },
+      "company": "Tech Agency, LLC",
+      "duration": {
+        "en": "20XX - 20XX",
+        "cs": "20XX - 20XX",
+        "de": "20XX - 20XX"
+      },
+      "description": {
+        "en": "Leading development of enterprise web applications",
+        "cs": "Vedení vývoje podnikových webových aplikací",
+        "de": "Leitung der Entwicklung von Unternehmens-Webanwendungen"
+      }
+    },
+    {
+      "position": {
+        "en": "CEO & Founder, Full Stack Developer",
+        "cs": "CEO a zakladatel, Full Stack vývojář",
+        "de": "CEO und Gründer, Full Stack-Entwickler"
+      },
+      "company": "Web Solutions Studio",
+      "duration": {
+        "en": "20XX - Present",
+        "cs": "20XX - současnost",
+        "de": "20XX - Aktuell"
+      },
+      "description": {
+        "en": "Founded and currently leading a web development studio. Responsible for Full Stack development of web applications, creating marketing content, and designing visual materials. Driving the company's vision and strategy while managing multiple roles.",
+        "cs": "Založil a aktuálně vedu studio pro vývoj webů. Zodpovědný za Full Stack vývoj webových aplikací, tvorbu marketingového obsahu a návrh vizuálních materiálů. Řídím vizi a strategii společnosti při výkonu více rolí.",
+        "de": "Gründer und derzeitiger CEO eines Webentwicklungsstudios. Verantwortlich für die Full Stack-Entwicklung von Webanwendungen, die Erstellung von Marketinginhalten und die Gestaltung von visuellen Materialien. Treibe die Vision und Strategie des Unternehmens voran und manage mehrere Rollen gleichzeitig."
+      }
+    }
+  ],
   "contact": {
-    "email": "john.doe@example.com",
-    "github": "https://github.com/johndoe",
-    "linkedin": "https://linkedin.com/in/johndoe",
-    "twitter": "https://twitter.com/johndoe"
+    "email": "yourname@example.com",
+    "github": "https://github.com/username",
+    "linkedin": "https://www.linkedin.com/in/username/",
+    "twitter": "https://twitter.com/username"
   }
 }
