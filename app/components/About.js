@@ -1,192 +1,142 @@
 'use client';
-import { useLanguage } from '../contexts/LanguageContext';
-import portfolioData from '../../data/portfolio.json';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useEffect, useState } from 'react';
 
-const About = () => {
-  const { language } = useLanguage();
-  const { about } = portfolioData;
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+const TimelineItem = ({ year, title, subtitle, description, isLeft }) => {
+  const [isVisible, setIsVisible] = useState(false);
 
-  const getTranslatedText = (obj) => {
-    return obj[language] || obj.en; // Fallback to English if translation not found
-  };
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
+    const element = document.getElementById(`timeline-${title.replace(/\s+/g, '-')}`);
+    if (element) {
+      observer.observe(element);
     }
-  };
 
-  const itemVariants = {
-    hidden: { 
-      opacity: 0,
-      y: 20
-    },
-    visible: { 
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
+    return () => {
+      if (element) {
+        observer.unobserve(element);
       }
-    }
-  };
-
-  const listItemVariants = {
-    hidden: { 
-      opacity: 0,
-      x: -20
-    },
-    visible: { 
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
-
-  const CardWithAnimation = ({ children, index }) => (
-    <motion.div
-      className="tech-card p-4"
-      variants={listItemVariants}
-      custom={index}
-      whileHover={{ 
-        scale: 1.02,
-        transition: { duration: 0.2 }
-      }}
-    >
-      {children}
-    </motion.div>
-  );
+    };
+  }, [title]);
 
   return (
-    <section id="about" className="py-20 relative">
-      <div className="section-container" ref={containerRef}>
-        <motion.h2 
-          className="text-4xl font-bold mb-12 text-center heading-gradient"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-        >
-          {language === 'en' ? 'About Me' :
-           language === 'cs' ? 'O mně' :
-           'Über mich'}
-        </motion.h2>
+    <div
+      id={`timeline-${title.replace(/\s+/g, '-')}`}
+      className={`flex items-center w-full ${
+        isLeft ? 'justify-start' : 'justify-end'
+      } my-8 transform transition-all duration-1000 ${
+        isVisible
+          ? 'translate-x-0 opacity-100'
+          : `${isLeft ? '-translate-x-full' : 'translate-x-full'} opacity-0`
+      }`}
+    >
+      <div className={`w-full md:w-5/12 ${isLeft ? 'text-left' : 'text-right'}`}>
+        <div className="tech-card">
+          <div className="text-sm text-green-400 mb-2">{year}</div>
+          <h3 className="text-xl font-semibold mb-2 heading-gradient">{title}</h3>
+          <div className="text-gray-400 mb-2">{subtitle}</div>
+          {description && <p className="text-gray-500">{description}</p>}
+        </div>
+      </div>
+    </div>
+  );
+};
 
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-12"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          <motion.div className="space-y-6" variants={containerVariants}>
-            <motion.h3 
-              className="text-2xl font-semibold text-[rgb(var(--accent-primary))] mb-4"
-              variants={itemVariants}
-            >
-              {language === 'en' ? 'Background' :
-               language === 'cs' ? 'Pozadí' :
-               'Hintergrund'}
-            </motion.h3>
-            <motion.p 
-              className="text-gray-300 leading-relaxed"
-              variants={itemVariants}
-            >
-              {getTranslatedText(about.bio)}
-            </motion.p>
-            
-            <motion.div 
-              className="pt-4"
-              variants={containerVariants}
-            >
-              <motion.h4 
-                className="text-xl font-semibold text-[rgb(var(--accent-secondary))] mb-3"
-                variants={itemVariants}
-              >
-                {language === 'en' ? 'Education' :
-                 language === 'cs' ? 'Vzdělání' :
-                 'Ausbildung'}
-              </motion.h4>
-              <motion.ul 
-                className="space-y-3"
-                variants={containerVariants}
-              >
-                {about.education.map((edu, index) => (
-                  <CardWithAnimation key={index} index={index}>
-                    <motion.div 
-                      className="font-medium text-[rgb(var(--accent-primary))]"
-                      variants={itemVariants}
-                    >
-                      {getTranslatedText(edu.degree)}
-                    </motion.div>
-                    <motion.div 
-                      className="text-sm text-gray-400"
-                      variants={itemVariants}
-                    >
-                      {edu.year}
-                    </motion.div>
-                    <motion.div 
-                      className="text-gray-300"
-                      variants={itemVariants}
-                    >
-                      {getTranslatedText(edu.school)}
-                    </motion.div>
-                  </CardWithAnimation>
-                ))}
-              </motion.ul>
-            </motion.div>
-          </motion.div>
+const About = ({ about }) => {
+  const [isVisible, setIsVisible] = useState(false);
 
-          <motion.div 
-            className="space-y-6"
-            variants={containerVariants}
-          >
-            <motion.h3 
-              className="text-2xl font-semibold text-[rgb(var(--accent-primary))] mb-4"
-              variants={itemVariants}
-            >
-              {language === 'en' ? 'Experience' :
-               language === 'cs' ? 'Zkušenosti' :
-               'Erfahrung'}
-            </motion.h3>
-            <motion.div 
-              className="space-y-4"
-              variants={containerVariants}
-            >
-              {about.experience.map((exp, index) => (
-                <CardWithAnimation key={index} index={index}>
-                  <motion.div 
-                    className="font-medium text-[rgb(var(--accent-primary))]"
-                    variants={itemVariants}
-                  >
-                    {getTranslatedText(exp.position)}
-                  </motion.div>
-                  <motion.div 
-                    className="text-sm text-gray-400"
-                    variants={itemVariants}
-                  >
-                    {exp.company} | {getTranslatedText(exp.duration)}
-                  </motion.div>
-                  <motion.div 
-                    className="text-gray-300 mt-2"
-                    variants={itemVariants}
-                  >
-                    {getTranslatedText(exp.description)}
-                  </motion.div>
-                </CardWithAnimation>
-              ))}
-            </motion.div>
-          </motion.div>
-        </motion.div>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const element = document.getElementById('about-bio');
+    if (element) {
+      observer.observe(element);
+    }
+
+    return () => {
+      if (element) {
+        observer.unobserve(element);
+      }
+    };
+  }, []);
+
+  return (
+    <section id="about" className="relative py-20">
+      {/* Background decoration */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-5">
+        <div className="w-[800px] h-[800px] rounded-full bg-gradient-to-r from-green-400 to-blue-400 rotate-45 blur-3xl" />
+      </div>
+
+      <div className="section-container relative">
+        <h2 className="text-4xl font-bold text-center mb-16 heading-gradient">
+          About Me
+        </h2>
+
+        <div
+          id="about-bio"
+          className={`max-w-3xl mx-auto mb-20 transform transition-all duration-1000 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+          }`}
+        >
+          <div className="tech-card">
+            <p className="text-gray-300 text-lg leading-relaxed">{about.bio}</p>
+          </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto">
+          {/* Education Timeline */}
+          <h3 className="text-2xl font-semibold mb-8 text-center heading-gradient">
+            Education
+          </h3>
+          <div className="relative">
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gray-800" />
+            {about.education.map((edu, index) => (
+              <TimelineItem
+                key={edu.degree}
+                year={edu.year}
+                title={edu.degree}
+                subtitle={edu.school}
+                isLeft={index % 2 === 0}
+              />
+            ))}
+          </div>
+
+          {/* Experience Timeline */}
+          <h3 className="text-2xl font-semibold mb-8 mt-16 text-center heading-gradient">
+            Experience
+          </h3>
+          <div className="relative">
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gray-800" />
+            {about.experience.map((exp, index) => (
+              <TimelineItem
+                key={exp.position}
+                year={exp.duration}
+                title={exp.position}
+                subtitle={exp.company}
+                description={exp.description}
+                isLeft={index % 2 === 0}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

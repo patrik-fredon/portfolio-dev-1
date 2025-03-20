@@ -10,39 +10,16 @@
   --accent-secondary: 56, 189, 248;
 }
 
-/* Theme transitions */
-* {
-  transition: background-color 0.3s ease-in-out, 
-              color 0.3s ease-in-out, 
-              border-color 0.3s ease-in-out,
-              opacity 0.3s ease-in-out;
-}
-
-/* Smooth gradient transition */
-@property --gradient-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes gradient-rotate {
-  0% { --gradient-angle: 0deg; }
-  100% { --gradient-angle: 360deg; }
-}
-
 body {
-  min-height: 100vh;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
     to bottom,
     rgb(var(--background-start-rgb)),
     rgb(var(--background-end-rgb))
   );
-  background-size: 200% 200%;
-  animation: gradientMove 15s ease infinite;
+  min-height: 100vh;
 }
 
-/* Animations */
 @keyframes slideInLeft {
   from {
     transform: translateX(-100%);
@@ -88,118 +65,20 @@ body {
   animation: fadeIn 0.8s ease-out forwards;
 }
 
-@keyframes dropIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.dropdown-enter {
-  animation: dropIn 0.2s ease-out forwards;
-}
-
-.scale-enter {
-  animation: scaleIn 0.2s ease-out forwards;
-}
-
 @layer components {
   .section-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16;
   }
   
   .heading-gradient {
-    @apply bg-gradient-to-r from-[rgb(var(--accent-primary))] to-[rgb(var(--accent-secondary))] bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent;
   }
   
   .tech-card {
-    @apply bg-black/30 backdrop-blur-sm border border-gray-700 rounded-lg p-6 hover:border-[rgb(var(--accent-primary))] transition-all duration-300;
+    @apply bg-black/30 backdrop-blur-sm border border-gray-700 rounded-lg p-6 hover:border-green-400/50 transition-all duration-300;
   }
   
   .button-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-[rgb(var(--accent-primary))] to-[rgb(var(--accent-secondary))] rounded-lg font-semibold text-black hover:opacity-90 transition-opacity;
+    @apply px-6 py-3 bg-gradient-to-r from-green-400 to-blue-400 rounded-lg font-semibold text-black hover:opacity-90 transition-opacity;
   }
-}
-
-@keyframes gradientMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Theme-specific styles */
-[data-theme='synthwave'] {
-  --gradient-overlay: linear-gradient(45deg, rgba(255, 83, 244, 0.1), rgba(0, 223, 255, 0.1));
-}
-
-[data-theme='cyberpunk'] {
-  --gradient-overlay: linear-gradient(45deg, rgba(255, 231, 0, 0.1), rgba(0, 255, 166, 0.1));
-}
-
-[data-theme='dracula'] {
-  --gradient-overlay: linear-gradient(45deg, rgba(255, 121, 198, 0.1), rgba(139, 233, 253, 0.1));
-}
-
-[data-theme='decent'] {
-  --gradient-overlay: linear-gradient(45deg, rgba(147, 197, 253, 0.1), rgba(167, 139, 250, 0.1));
-}
-
-/* Theme-specific gradients */
-[data-theme='synthwave'] .tech-card {
-  @apply bg-black/40 border-purple-800/50;
-  background-image: var(--gradient-overlay);
-}
-
-[data-theme='cyberpunk'] .tech-card {
-  @apply bg-black/50 border-yellow-400/30;
-  background-image: var(--gradient-overlay);
-}
-
-[data-theme='dracula'] .tech-card {
-  @apply bg-[#282a36]/50 border-purple-500/30;
-  background-image: var(--gradient-overlay);
-}
-
-[data-theme='decent'] .tech-card {
-  @apply bg-gray-800/30 border-blue-500/20;
-  background-image: var(--gradient-overlay);
-}
-
-/* Theme-specific button styles */
-[data-theme='synthwave'] .button-primary {
-  text-shadow: 0 0 8px rgb(var(--accent-primary));
-}
-
-[data-theme='cyberpunk'] .button-primary {
-  border: 1px solid rgb(var(--accent-secondary));
-  box-shadow: 0 0 15px rgba(var(--accent-primary), 0.3);
-}
-
-[data-theme='dracula'] .button-primary {
-  border: 1px solid rgba(var(--accent-secondary), 0.3);
-}
-
-[data-theme='decent'] .button-primary {
-  @apply bg-opacity-90 hover:bg-opacity-100;
 }

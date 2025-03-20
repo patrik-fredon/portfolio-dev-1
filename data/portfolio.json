@@ -1,25 +1,9 @@
 {
-  "settings": {
-    "theme": "synthwave",
-    "defaultLanguage": "en"
-  },
   "introduction": {
     "name": "John Doe",
-    "title": {
-      "en": "Full Stack Developer",
-      "cs": "Full Stack vývojář",
-      "de": "Full Stack Entwickler"
-    },
-    "tagline": {
-      "en": "Building digital experiences with code and creativity",
-      "cs": "Tvořím digitální zážitky pomocí kódu a kreativity",
-      "de": "Digitale Erlebnisse durch Code und Kreativität gestalten"
-    },
-    "description": {
-      "en": "I'm a passionate developer with a keen eye for design and a commitment to creating efficient, scalable solutions. With expertise in both front-end and back-end technologies, I bring ideas to life through clean code and intuitive user experiences.",
-      "cs": "Jsem vášnivý vývojář s citem pro design a závazkem vytvářet efektivní, škálovatelná řešení. Díky odborným znalostem v oblasti front-end i back-end technologií přetvářím nápady v život pomocí čistého kódu a intuitivního uživatelského rozhraní.",
-      "de": "Ich bin ein leidenschaftlicher Entwickler mit einem Auge für Design und dem Engagement, effiziente, skalierbare Lösungen zu erstellen. Mit Expertise in Front-End- und Back-End-Technologien erwecke ich Ideen durch sauberen Code und intuitive Benutzererfahrungen zum Leben."
-    }
+    "title": "Full Stack Developer",
+    "tagline": "Building digital experiences with code and creativity",
+    "description": "I'm a passionate developer with a keen eye for design and a commitment to creating efficient, scalable solutions. With expertise in both front-end and back-end technologies, I bring ideas to life through clean code and intuitive user experiences."
   },
   "skills": {
     "languages": [
@@ -49,48 +33,24 @@
   },
   "projects": [
     {
-      "title": {
-        "en": "E-commerce Platform",
-        "cs": "E-commerce Platforma",
-        "de": "E-Commerce-Plattform"
-      },
-      "description": {
-        "en": "A full-stack e-commerce solution with real-time inventory management",
-        "cs": "Kompletní e-commerce řešení se správou zásob v reálném čase",
-        "de": "Eine Full-Stack-E-Commerce-Lösung mit Echtzeit-Bestandsverwaltung"
-      },
+      "title": "E-commerce Platform",
+      "description": "A full-stack e-commerce solution with real-time inventory management",
       "technologies": ["Next.js", "Node.js", "MongoDB", "TailwindCSS"],
       "image": "/projects/ecommerce.png",
       "github": "https://github.com/username/ecommerce",
       "live": "https://ecommerce-demo.com"
     },
     {
-      "title": {
-        "en": "Task Management App",
-        "cs": "Aplikace pro správu úkolů",
-        "de": "Aufgabenverwaltungs-App"
-      },
-      "description": {
-        "en": "Collaborative task management tool with real-time updates",
-        "cs": "Kolaborativní nástroj pro správu úkolů s aktualizacemi v reálném čase",
-        "de": "Kollaboratives Aufgabenverwaltungstool mit Echtzeit-Updates"
-      },
+      "title": "Task Management App",
+      "description": "Collaborative task management tool with real-time updates",
       "technologies": ["React", "Firebase", "TailwindCSS"],
       "image": "/projects/taskmanager.png",
       "github": "https://github.com/username/taskmanager",
       "live": "https://taskmanager-demo.com"
     },
     {
-      "title": {
-        "en": "AI Chat Interface",
-        "cs": "AI Chat Rozhraní",
-        "de": "KI-Chat-Schnittstelle"
-      },
-      "description": {
-        "en": "Modern chat interface with AI-powered responses",
-        "cs": "Moderní chatovací rozhraní s odpověďmi poháněnými umělou inteligencí",
-        "de": "Moderne Chat-Schnittstelle mit KI-gestützten Antworten"
-      },
+      "title": "AI Chat Interface",
+      "description": "Modern chat interface with AI-powered responses",
       "technologies": ["Next.js", "OpenAI API", "TailwindCSS"],
       "image": "/projects/aichat.png",
       "github": "https://github.com/username/aichat",
@@ -98,71 +58,31 @@
     }
   ],
   "about": {
-    "bio": {
-      "en": "With over 5 years of experience in software development, I specialize in building modern web applications that solve real-world problems. My journey in tech started with a curiosity about how things work, which evolved into a passion for creating elegant solutions through code.",
-      "cs": "S více než 5 lety zkušeností v oblasti vývoje software se specializuji na tvorbu moderních webových aplikací, které řeší reálné problémy. Moje cesta v technologiích začala zvědavostí o tom, jak věci fungují, což se vyvinulo v vášeň pro vytváření elegantních řešení pomocí kódu.",
-      "de": "Mit über 5 Jahren Erfahrung in der Softwareentwicklung spezialisiere ich mich auf die Entwicklung moderner Webanwendungen, die reale Probleme lösen. Meine Reise in der Technologie begann mit der Neugier darüber, wie Dinge funktionieren, die sich zu einer Leidenschaft für die Entwicklung eleganter Lösungen durch Code entwickelte."
-    },
+    "bio": "With over 5 years of experience in software development, I specialize in building modern web applications that solve real-world problems. My journey in tech started with a curiosity about how things work, which evolved into a passion for creating elegant solutions through code.",
     "education": [
       {
-        "degree": {
-          "en": "Master of Science in Computer Science",
-          "cs": "Magisterské studium v oboru Informatika",
-          "de": "Master of Science in Informatik"
-        },
-        "school": {
-          "en": "University of Technology",
-          "cs": "Technická univerzita",
-          "de": "Technische Universität"
-        },
+        "degree": "Master of Science in Computer Science",
+        "school": "University of Technology",
         "year": "2020"
       },
       {
-        "degree": {
-          "en": "Bachelor of Science in Software Engineering",
-          "cs": "Bakalářské studium v oboru Softwarové inženýrství",
-          "de": "Bachelor of Science in Softwaretechnik"
-        },
-        "school": {
-          "en": "State University",
-          "cs": "Státní univerzita",
-          "de": "Staatliche Universität"
-        },
+        "degree": "Bachelor of Science in Software Engineering",
+        "school": "State University",
         "year": "2018"
       }
     ],
     "experience": [
       {
-        "position": {
-          "en": "Senior Full Stack Developer",
-          "cs": "Senior Full Stack vývojář",
-          "de": "Senior Full Stack Entwickler"
-        },
+        "position": "Senior Full Stack Developer",
         "company": "Tech Solutions Inc.",
-        "duration": {
-          "en": "2020 - Present",
-          "cs": "2020 - současnost",
-          "de": "2020 - Aktuell"
-        },
-        "description": {
-          "en": "Leading development of enterprise web applications",
-          "cs": "Vedení vývoje podnikových webových aplikací",
-          "de": "Leitung der Entwicklung von Unternehmens-Webanwendungen"
-        }
+        "duration": "2020 - Present",
+        "description": "Leading development of enterprise web applications"
       },
       {
-        "position": {
-          "en": "Software Developer",
-          "cs": "Softwarový vývojář",
-          "de": "Software-Entwickler"
-        },
+        "position": "Software Developer",
         "company": "Digital Innovations Co.",
         "duration": "2018 - 2020",
-        "description": {
-          "en": "Developed and maintained multiple client projects",
-          "cs": "Vývoj a údržba několika klientských projektů",
-          "de": "Entwicklung und Wartung mehrerer Kundenprojekte"
-        }
+        "description": "Developed and maintained multiple client projects"
       }
     ]
   },

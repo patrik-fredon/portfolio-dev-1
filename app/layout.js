@@ -1,25 +1,20 @@
 import './globals.css';
-import { Inter } from 'next/font/google';
-import { LanguageProvider } from './contexts/LanguageContext';
 import Navbar from './components/Navbar';
 
-const inter = Inter({ subsets: ['latin'] });
-
 export const metadata = {
-  title: 'Portfolio',
-  description: 'Professional Portfolio Website',
+  title: 'Professional Portfolio',
+  description: 'A showcase of my work, skills, and experience in software development',
+  keywords: ['portfolio', 'developer', 'software engineer', 'web development', 'full stack'],
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-background text-white antialiased`}>
-        <LanguageProvider>
-          <Navbar />
-          <main className="min-h-screen">
-            {children}
-          </main>
-        </LanguageProvider>
+    <html lang="en" className="scroll-smooth">
+      <body className="antialiased">
+        <Navbar />
+        <main className="pt-16">
+          {children}
+        </main>
       </body>
     </html>
   );
