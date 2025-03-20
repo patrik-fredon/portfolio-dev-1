@@ -1,0 +1,46 @@
+{
+  "nav": {
+    "about": "Über mich",
+    "skills": "Fähigkeiten",
+    "projects": "Projekte",
+    "contact": "Kontakt"
+  },
+  "intro": {
+    "tagline": "Digitale Erlebnisse durch Code und Kreativität gestalten",
+    "description": "Ich bin ein leidenschaftlicher Entwickler mit einem Auge für Design und dem Engagement, effiziente, skalierbare Lösungen zu erstellen. Mit Expertise in Front-End- und Back-End-Technologien erwecke ich Ideen durch sauberen Code und intuitive Benutzererfahrungen zum Leben."
+  },
+  "skills": {
+    "title": "Technische Fähigkeiten",
+    "categories": {
+      "languages": "Sprachen",
+      "frameworks": "Frameworks",
+      "tools": "Werkzeuge"
+    }
+  },
+  "projects": {
+    "title": "Ausgewählte Projekte",
+    "viewLive": "Live ansehen",
+    "viewCode": "Code ansehen"
+  },
+  "about": {
+    "title": "Über mich",
+    "education": {
+      "title": "Ausbildung",
+      "degree": {
+        "masters": "Master of Science in Informatik",
+        "bachelors": "Bachelor of Science in Softwaretechnik"
+      }
+    },
+    "experience": {
+      "title": "Erfahrung",
+      "current": "Aktuell"
+    }
+  },
+  "contact": {
+    "title": "Kontakt aufnehmen",
+    "subtitle": "Kontaktieren Sie mich gerne für Zusammenarbeit oder einfach nur zum freundlichen Austausch"
+  },
+  "theme": {
+    "title": "Design"
+  }
+}

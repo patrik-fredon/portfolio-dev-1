@@ -1,0 +1,46 @@
+{
+  "nav": {
+    "about": "O mně",
+    "skills": "Dovednosti",
+    "projects": "Projekty",
+    "contact": "Kontakt"
+  },
+  "intro": {
+    "tagline": "Tvořím digitální zážitky pomocí kódu a kreativity",
+    "description": "Jsem vášnivý vývojář s citem pro design a závazkem vytvářet efektivní, škálovatelná řešení. Díky odborným znalostem v oblasti front-end i back-end technologií přetvářím nápady v život pomocí čistého kódu a intuitivního uživatelského rozhraní."
+  },
+  "skills": {
+    "title": "Technické dovednosti",
+    "categories": {
+      "languages": "Jazyky",
+      "frameworks": "Frameworky",
+      "tools": "Nástroje"
+    }
+  },
+  "projects": {
+    "title": "Vybrané projekty",
+    "viewLive": "Zobrazit živě",
+    "viewCode": "Zobrazit kód"
+  },
+  "about": {
+    "title": "O mně",
+    "education": {
+      "title": "Vzdělání",
+      "degree": {
+        "masters": "Magisterské studium v oboru Informatika",
+        "bachelors": "Bakalářské studium v oboru Softwarové inženýrství"
+      }
+    },
+    "experience": {
+      "title": "Zkušenosti",
+      "current": "Současnost"
+    }
+  },
+  "contact": {
+    "title": "Kontaktujte mě",
+    "subtitle": "Neváhejte mě kontaktovat pro spolupráci nebo jen přátelské popovídání"
+  },
+  "theme": {
+    "title": "Motiv"
+  }
+}

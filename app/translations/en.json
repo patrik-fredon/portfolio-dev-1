@@ -1,0 +1,46 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "intro": {
+    "tagline": "Building digital experiences with code and creativity",
+    "description": "I'm a passionate developer with a keen eye for design and a commitment to creating efficient, scalable solutions. With expertise in both front-end and back-end technologies, I bring ideas to life through clean code and intuitive user experiences."
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "categories": {
+      "languages": "Languages",
+      "frameworks": "Frameworks",
+      "tools": "Tools"
+    }
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "viewLive": "View Live",
+    "viewCode": "View Code"
+  },
+  "about": {
+    "title": "About Me",
+    "education": {
+      "title": "Education",
+      "degree": {
+        "masters": "Master of Science in Computer Science",
+        "bachelors": "Bachelor of Science in Software Engineering"
+      }
+    },
+    "experience": {
+      "title": "Experience",
+      "current": "Present"
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Feel free to reach out for collaborations or just a friendly hello"
+  },
+  "theme": {
+    "title": "Theme"
+  }
+}
